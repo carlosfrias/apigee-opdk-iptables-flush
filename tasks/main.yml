@@ -1,4 +1,10 @@
 ---
 # tasks file for apigee-opdk-iptables-port-block
+#- name: Flushing iptables
+#  shell: "iptables -F"
+
 - name: Flushing iptables
-  shell: "iptables -F"
+  become: true
+  become_user: root
+  iptables:
+    flush: yes
